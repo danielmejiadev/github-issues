@@ -6,6 +6,18 @@ The autocomplete has a default debounce time to avoid multiple requests and a mi
 
 Live app running on github pages [https://danielmejiadev.github.io/github-issues/](https://danielmejiadev.github.io/github-issues/)
 
+## Considerations
+
+The input and list are navigable using the keyboard.
+  - Using `tab` and `shift+tab`, the user should be able to move focus to and from the different issues.
+    - With the cursor in the input, pressing the `tab` key should move focus to the first item with the default browser focus style.
+    - Subsequent presses of the "tab" key should focus the next item in the list.
+    - Pressing the `shift+tab` keys should focus the previous item in the list.
+    - Pressing the `shift+tab` key when the first item is focused should focus
+      the input again.
+    - Mousing over other list items should highlight them while the keyboard-
+      focused item remains focused.
+
 ## Run Application
 
 In the project directory, you can run:
