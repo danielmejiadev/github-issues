@@ -38,9 +38,10 @@ describe('Suggestions', () => {
       .props();
 
     const { href, children } = link.props;
-    const [title, numberIssue] = children;
+    const [title, labels, numberIssue] = children;
 
-    expect(title).toBeTruthy();
+    expect(title.props.children).toBe('Issue');
+    expect(labels).toBeTruthy();
     expect(numberIssue.props.children).toBe('#10');
     expect(href).toBe(issue.html_url);
   });

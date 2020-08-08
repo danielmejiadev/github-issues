@@ -12,10 +12,10 @@ export interface AutocompleteProvider {
 }
 
 export function AutocompleteProvider({ children }: AutocompleteProvider) {
-  const { search, onSearch, suggestions } = useAutocompleteState();
+  const { search, onSearch, suggestions, loading, error } = useAutocompleteState();
 
   return (
-    <AutocompleteContext.Provider value={{ search, onSearch, suggestions }}>
+    <AutocompleteContext.Provider value={{ search, onSearch, suggestions, loading, error }}>
       {children}
     </AutocompleteContext.Provider>
   )

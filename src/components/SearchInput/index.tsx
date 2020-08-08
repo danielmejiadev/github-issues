@@ -8,7 +8,7 @@ import { useAutocomplete } from '../../hooks/useAutocomplete';
 import './styles.css'
 
 export function SearchInput() {
-  const { search, onSearch } = useAutocomplete();
+  const { search, onSearch, loading } = useAutocomplete();
 
   return (
     <>
@@ -18,6 +18,13 @@ export function SearchInput() {
             <use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#search" />
           </svg>
         </button>
+        {
+          loading && (
+            <div className="icon-container">
+              <i className="loader"></i>
+            </div>
+          )
+        }
         <input
           value={search}
           onChange={onSearch}

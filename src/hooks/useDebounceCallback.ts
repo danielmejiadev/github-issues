@@ -2,7 +2,7 @@
 import React from 'react';
 import lodash from 'lodash';
 
-export type CallbackParams = (...args: unknown[]) => void;
+export type CallbackParams = (...args: any[]) => void;
 
 /**
  * A custom use callback hook to return a debounced function.

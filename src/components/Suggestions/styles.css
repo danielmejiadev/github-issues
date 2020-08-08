@@ -16,7 +16,7 @@
  }
   
  .suggestions li {
-  padding: 10px 10px;
+  padding: 0px 10px;
   cursor: pointer;
   border-bottom: 1px solid gray;
   display: flex;
@@ -38,9 +38,11 @@
  .issue-container {
    text-decoration: none;
    color: black;
+   display: flex;
+   flex-direction: column;
  }
 
- .issue-title {
+ .labels-container {
   display: flex;
   flex-direction: row;
  }
@@ -53,7 +55,6 @@
   line-height: 2;
   border: 1px solid transparent;
   border-radius: 2em;
-  margin-left: 5px;
   margin-right: 5px;
  }
   

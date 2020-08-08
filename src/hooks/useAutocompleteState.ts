@@ -22,19 +22,23 @@ import { AutocompleteContext } from '../contexts/Autocomplete.context';
  */
 export function useAutocompleteState(): AutocompleteContext {
   const [search, setSearch] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState();
   const [suggestions, setSuggestions] = React.useState<IssueModel[]>([]);
 
-  const debounceSearch = useDebounceCallback((query) => {
-    if (query) {
+  const debounceSearch = useDebounceCallback((query: string) => {
+    if (query?.length > 3) {
+      setLoading(true);
       return githubClient.issues
         .getRepoIssues('reactjs', 'reactjs.org', {
           params: {
             per_page: 100,
-            page: 1,
           }
         })
-        .then((issues: IssueModel[]) => calculateSuggestions(issues, query as string))
-        .then((issuesFiltered) => setSuggestions(issuesFiltered));
+        .then((issues: IssueModel[]) => calculateSuggestions(issues, query))
+        .then((issuesFiltered) => setSuggestions(issuesFiltered))
+        .catch(setError)
+        .finally(() => setLoading(false));
     }
 
     return setSuggestions([]);
@@ -46,6 +50,5 @@ export function useAutocompleteState(): AutocompleteContext {
     debounceSearch(value);
   }, [debounceSearch]);
 
-
-  return { search, onSearch, suggestions };
+  return { search, onSearch, suggestions, loading, error };
 }

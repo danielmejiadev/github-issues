@@ -8,7 +8,11 @@ import { useAutocomplete } from '../../hooks/useAutocomplete';
 import './styles.css'
 
 export function Suggestions() {
-  const { suggestions } = useAutocomplete();
+  const { suggestions, error } = useAutocomplete();
+
+  if (error) {
+    return <p>There was an error, please try again</p>
+  }
 
   if (suggestions.length === 0) {
     return null;
@@ -23,9 +27,15 @@ export function Suggestions() {
             key={issue.id}
             tabIndex={0}
           >
-            <a className="issue-container" href={issue.html_url} rel="noopener noreferrer" target="_blank">
-              <div className="issue-title">
-                <h4>{issue.title}</h4>
+            <a
+              tabIndex={-1}
+              className="issue-container"
+              href={issue.html_url}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <h4>{issue.title}</h4>
+              <div className="labels-container">
                 {
                   issue.labels.map((label) => <p className="issue-label" key={label.id}>{label.name}</p>)
                 }
