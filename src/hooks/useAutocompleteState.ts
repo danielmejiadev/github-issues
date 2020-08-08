@@ -27,7 +27,7 @@ export function useAutocompleteState(): AutocompleteContext {
   const [suggestions, setSuggestions] = React.useState<IssueModel[]>([]);
 
   const debounceSearch = useDebounceCallback((query: string) => {
-    if (query?.length > 3) {
+    if (query?.length >= 3) {
       setLoading(true);
       return githubClient.issues
         .getRepoIssues('reactjs', 'reactjs.org', {
