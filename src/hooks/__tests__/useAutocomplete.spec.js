@@ -2,10 +2,10 @@
 import React from 'react';
 
 // Context
-import { TypeaheadContext } from '../../contexts/Typeahead.context';
+import { TypeaheadContext } from '../../contexts/Autocomplete.context';
 
 // Under test
-import { useTypeahead } from '../useTypehead';
+import { useTypeahead } from '../useAutocomplete';
 
 describe('UseTypeaheadHook', () => {
   it('should use typeahead hook', () => {

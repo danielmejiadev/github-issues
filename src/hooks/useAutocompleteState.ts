@@ -13,11 +13,14 @@ import { IssueModel } from '../models/IssueModel';
 // Hooks
 import { useDebounceCallback } from './useDebounceCallback';
 
+// Context
+import { AutocompleteContext } from '../contexts/Autocomplete.context';
+
 /**
  * Custom hook to generate the typeahead state required.
  * @returns { Object } The state and actions for given manager.
  */
-export function useTypeaheadState() {
+export function useAutocompleteState(): AutocompleteContext {
   const [search, setSearch] = React.useState('');
   const [suggestions, setSuggestions] = React.useState<IssueModel[]>([]);
 
