@@ -20,12 +20,12 @@ describe('AutocompleteProvider', () => {
   }
 
   beforeEach(() => {
-    jest.spyOn(Hook, 'useTypeaheadState').mockReturnValue(state);
+    jest.spyOn(Hook, 'useAutocompleteState').mockReturnValue(state);
     component = shallow(<AutocompleteProvider {...props} />)
   });
 
   afterEach(() => {
-    expect(Hook.useTypeaheadState).toHaveBeenCalled();
+    expect(Hook.useAutocompleteState).toHaveBeenCalled();
   });
 
   it('should render correctly', () => {

@@ -2,18 +2,18 @@
 import React from 'react';
 
 // Context
-import { TypeaheadContext } from '../../contexts/Autocomplete.context';
+import { AutocompleteContext } from '../../contexts/Autocomplete.context';
 
 // Under test
-import { useTypeahead } from '../useAutocomplete';
+import { useAutocomplete } from '../useAutocomplete';
 
-describe('UseTypeaheadHook', () => {
-  it('should use typeahead hook', () => {
+describe('UseAutoComplete', () => {
+  it('should use autocomplete hook', () => {
     const state = {};
     jest.spyOn(React, 'useContext').mockReturnValue(state);
 
-    const response = useTypeahead();
+    const response = useAutocomplete();
     expect(response).toEqual(state);
-    expect(React.useContext).toHaveBeenCalledWith(TypeaheadContext);
+    expect(React.useContext).toHaveBeenCalledWith(AutocompleteContext);
   });
 });

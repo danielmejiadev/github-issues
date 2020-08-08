@@ -13,12 +13,10 @@ describe('SearchInput', () => {
   const state = {
     search: 'search',
     suggestions: [],
-    onSearch: jest.fn(),
-    handleKeyup: jest.fn(),
   };
 
   beforeEach(() => {
-    jest.spyOn(Hook, 'useTypeahead').mockReturnValue(state);
+    jest.spyOn(Hook, 'useAutocomplete').mockReturnValue(state);
     component = shallow(<SearchInput />)
   });
 
